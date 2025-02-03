@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using Res_Service.Data;
+using Res_Service.Models;
+using Res_Service.Repositores;
 
 namespace Res_Service
 {
@@ -11,6 +13,8 @@ namespace Res_Service
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddScoped(typeof(IUserRepository<>), typeof(UserRepository<>));
 
             builder.Services.AddDbContext<ApplicationDBContext>(options =>
 
